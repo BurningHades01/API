@@ -9,6 +9,7 @@ const db = require('./db/db')
 
 
 const routes = require('./routes/routes'); // importa as rotas
+const clienteRoutes = require('./routes/clienteroutes');
 const corsOptions = {
     origin: ['http://localhost:3333', 'https://meudominio.com'], //lista de origens permitidas
     methods: 'GET, POST, PUT, PATCH, DELETE', //métodos HTTP permitidos
@@ -37,6 +38,7 @@ app.get('/', (req, res) => {
 //APÓS DECLARAR NOSSAS ROTAS, AQUI FALAMOS PARA NOSSO APP USAR ELAS COMO REDERÊNCIA
 app.use('/', routes);
 
+app.use('/', clienteRoutes);
 // Middleware de tratamento de erros
 app.use((err, req, res, next) => {
     console.error(err.stack);
